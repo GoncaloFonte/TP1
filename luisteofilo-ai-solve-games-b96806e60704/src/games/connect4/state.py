@@ -79,8 +79,8 @@ class Connect4State(State):
         """
         self.__has_winner = False
 
-    
 
+    
     def __check_winner(self, player):
         # check for 3 across
         #count consecutive tree (conta numeros de 3 consecutivos)
@@ -167,12 +167,19 @@ class Connect4State(State):
 
         self.__turns_count += 1
         
+        
+
+      
     def __display_cell(self, row, col):
         piece = self.__grid[row][col]
-        space = ' '
         if piece == -1:
-            print(".", end="")
-        if piece == 0:
+            # define a list of your own color codes
+            color_palette = ["\033[97m", "\033[92m", "\033[91m", "\033[95m", "\033[30m", "\033[94m"]
+            # select a random color code from the color palette
+            random_color = random.choice(color_palette)
+            # print the "." character in the random color
+            print(f"{random_color}.\033[0m", end="")
+        elif piece == 0:
             print('_', end="")    
 
     def __display_numbers(self):
